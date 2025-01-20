@@ -36,3 +36,7 @@ ejecutar Script esta generado para una version de SqlServer 2019 o inferior
 Javascript 3D
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Este proyecto cuenta con 3 archivos Html, Javascript y hoja de estilos Css funciona con click sobre el archivo de extension html
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+En la raiz del repositorio se encuentra un video con el funcionamiento del aplicativo solicitado
