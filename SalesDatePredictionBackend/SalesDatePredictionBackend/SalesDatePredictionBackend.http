@@ -1,0 +1,6 @@
+@SalesDatePredictionBackend_HostAddress = http://localhost:5264
+
+GET {{SalesDatePredictionBackend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,9 @@
+.custom-toolbar {
+    background-color: black;  /* Color de fondo */
+    color: white;  /* Color del texto */
+  }
+  
+  .custom-toolbar mat-icon, 
+  .custom-toolbar span {
+    color: white;  /* Asegura que los íconos y el texto sean blancos */
+  }

@@ -1,0 +1,11 @@
+.modal-content {
+    width: 100%; /* Ajusta el porcentaje del ancho */
+    max-width: 500px; /* Ajusta el tamaño máximo */
+    margin: auto; /* Centra el modal */
+}
+.mat-dialog-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+}

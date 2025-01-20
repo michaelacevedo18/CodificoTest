@@ -1,0 +1,49 @@
+<div class="d-flex justify-content-between align-items-center">
+  <h3>Customers</h3>
+  <div class="input-group w-50 mb-3">
+      <input type="text" class="form-control" id="valueSearch" [(ngModel)]="valueSearch" placeholder="Customer Name" />
+      <div class="input-group-append">
+          <button class="btn btn-outline-secondary" (click)="searchCustomer()">
+              <mat-icon>search</mat-icon>
+          </button>
+      </div>
+  </div>
+</div>
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <ng-container matColumnDef="customerId">
+        <th mat-header-cell *matHeaderCellDef> Customer ID </th>
+        <td mat-cell *matCellDef="let customer"> {{ customer.customerId }} </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Name </th>
+        <td mat-cell *matCellDef="let customer"> {{ customer.name }} </td>
+    </ng-container>
+      
+    <ng-container matColumnDef="lastOrderDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Order Date</th>
+        <td mat-cell *matCellDef="let customer"> {{ customer.lastOrderDate | date:'dd/MM/yyyy' }} </td>
+    </ng-container>
+      
+    <ng-container matColumnDef="nextPredictedOrderDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Next Predicted Order </th>
+        <td mat-cell *matCellDef="let customer"> {{ customer.nextPredictedOrderDate | date:'dd/MM/yyyy' }} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let customer">
+        <button mat-button color="warn" (click)="openModalOrders(customer.customerId)">VIEW ORDERS</button>
+        <button mat-button style="color: rgba(13, 124, 10, 0.692);" (click)="openModalNewOrder(customer.customerId)">NEW ORDER</button>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator 
+    [length]="dataSource.data.length" 
+    [pageSize]="10" 
+    [pageSizeOptions]="[5, 10, 20]" 
+    showFirstLastButtons>
+</mat-paginator>

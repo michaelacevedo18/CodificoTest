@@ -1,0 +1,53 @@
+<div class="container mt-3">
+<div class="border border-danger text-white p-2 mb-3" style="background-color: red;">
+    <h3 class="text-left m-0">Customer AHPOP - Orders</h3>
+  </div>
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+    <!-- Order ID Column -->
+    <ng-container matColumnDef="orderId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Order ID </th>
+      <td mat-cell *matCellDef="let order"> {{ order.orderId }} </td>
+    </ng-container>
+  
+    <!-- Required Date Column -->
+    <ng-container matColumnDef="requiredDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Required Date </th>
+      <td mat-cell *matCellDef="let order"> {{ order.requiredDate | date:'dd/MM/yyyy' }} </td>
+    </ng-container>
+  
+    <!-- Shipped Date Column -->
+    <ng-container matColumnDef="shippedDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Shipped Date </th>
+      <td mat-cell *matCellDef="let order"> {{ order.shippedDate | date:'dd/MM/yyyy' }} </td>
+    </ng-container>
+  
+    <!-- Shipper Name Column -->
+    <ng-container matColumnDef="shipperName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Shipper Name </th>
+      <td mat-cell *matCellDef="let order"> {{ order.shipperName }} </td>
+    </ng-container>
+  
+    <!-- Shipper Address Column -->
+    <ng-container matColumnDef="shipperAddress">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Shipper Address </th>
+      <td mat-cell *matCellDef="let order"> {{ order.shipperAddress }} </td>
+    </ng-container>
+  
+    <!-- Shipper City Column -->
+    <ng-container matColumnDef="shipperCity">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Shipper City </th>
+      <td mat-cell *matCellDef="let order"> {{ order.shipperCity }} </td>
+    </ng-container>
+  
+    <!-- Table Rows -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>  
+  <mat-paginator 
+    [length]="dataSource.data.length" 
+    [pageSize]="10" 
+    [pageSizeOptions]="[5, 10, 20]" 
+    showFirstLastButtons>
+  </mat-paginator>
+</div>
