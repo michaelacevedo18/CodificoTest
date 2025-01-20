@@ -1,6 +1,5 @@
 ﻿namespace SalesDatePredictionModels.EntitiesObjects
-{
-    //Transportista
+{    
     public class Shipper 
     {
         public int ShipperId {  get; set; }        

@@ -25,7 +25,7 @@ namespace SalesDatePredictionBusinnesLogic.Implementations
         {
             var orders = await _context.Orders
                 .Where(x => x.CustomerId == customerId)
-                .Include(x => x.Shipper)  // Incluimos la relación con Shipper
+                .Include(x => x.Shipper)
                 .ToListAsync();
 
             

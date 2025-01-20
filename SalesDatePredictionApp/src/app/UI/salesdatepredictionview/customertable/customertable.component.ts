@@ -30,7 +30,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class CustomertableComponent implements OnInit, AfterViewInit {
   customers: Customer[] = [];
-  valueSearch: string = '';  // Almacena el valor de búsqueda
+  valueSearch: string = '';
   displayedColumns: string[] = ['customerId', 'name', 'lastOrderDate', 'nextPredictedOrderDate', 'actions'];
 
   dataSource: MatTableDataSource<Customer> = new MatTableDataSource<Customer>(this.customers);
@@ -43,20 +43,19 @@ export class CustomertableComponent implements OnInit, AfterViewInit {
   constructor(private dataService: OrdersService) {}
 
   ngOnInit() {
-    this.getPredictions();  // Obtiene las predicciones cuando se inicializa el componente
+    this.getPredictions();
   }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-
-  // Método para obtener las predicciones de pedidos con un filtro de búsqueda
+  
   getPredictions() {
     this.dataService.getTotalOrdersPredictions(this.valueSearch).subscribe(
       (response: ApiResponse<Customer[]>) => {
         if (response.result) {
-          this.dataSource.data = response.result;  // Actualiza los datos en la tabla
+          this.dataSource.data = response.result;
         } else {
           this.dataSource.data = [];
           console.log('La respuesta no contiene datos, ingrese datos en el backend');
@@ -67,13 +66,12 @@ export class CustomertableComponent implements OnInit, AfterViewInit {
       }
     );
   }
-
-  // Método que se llama al hacer clic en el botón de búsqueda
+  
   searchCustomer() {
-    this.getPredictions();  // Ejecuta la lógica de predicción con el valor actual de búsqueda
+    this.getPredictions();
   }
 
-  // Método para abrir el modal de pedidos
+  
   openModalOrders(customerId: number) {
     const dialogRef = this.dialog.open(OrdersviewComponent, {
       data: customerId,
@@ -82,8 +80,7 @@ export class CustomertableComponent implements OnInit, AfterViewInit {
       panelClass: 'full-screen-modal'
     });
   }
-
-  // Método para abrir el modal de nuevo pedido
+  
   openModalNewOrder(customerId: number) {
     const dialogRef = this.dialog.open(OrderformComponent, {
       data: customerId,

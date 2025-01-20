@@ -27,8 +27,6 @@ export class OrderformComponent implements OnInit{
   
   selectedShipperId: number=0;
   selectedShipperAdress: string = '';
-
-  // Variable para almacenar la dirección del shipper seleccionado
   
 constructor(@Inject(MAT_DIALOG_DATA) public data: any,private fb: FormBuilder,
  private dataService:OrdersService, private employeeService: EmployeeService,
@@ -68,7 +66,7 @@ constructor(@Inject(MAT_DIALOG_DATA) public data: any,private fb: FormBuilder,
       this.orderService.saveOrder(updatedData).subscribe(
         (response: ApiResponse<any>) => {
           if (response && response.displayMessage) {
-            alert(response.displayMessage);  // Mostrar el mensaje del servidor
+            alert(response.displayMessage);
             
             this.dialogRef.close();
             console.log('Datos guardados correctamente', response);
@@ -135,10 +133,10 @@ onClose(): void {
   this.dialogRef.close();
 }
 onShipperChange() {
-  // Encontrar el shipper seleccionado usando su ID
+  
   const selectedShipper = this.shippers.find(est => est.shipperId === this.selectedShipperId);
 
-  // Si se encuentra el shipper, actualizar la dirección
+  
   if (selectedShipper) {
     this.selectedShipperAdress = selectedShipper.shipAddress;
   }
